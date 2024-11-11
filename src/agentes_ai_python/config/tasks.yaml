@@ -1,0 +1,15 @@
+# Configuración de las tareas
+
+investigacion_tema:
+  description: >
+    Investiga un tema popular de Python en YouTube, identificando el contenido de mayor interés.
+  expected_output: >
+    Un resumen detallado del tema investigado con enlaces a los videos relevantes y una 
+    breve descripción del contenido más popular en Python.
+
+creacion_guion:
+  description: >
+    Crear un guion educativo en base al resumen de la investigación realizado por el Investigador de Tendencias.
+  expected_output: >
+    Un guion educativo bien estructurado, que siga los puntos claves de la investigación e incluya 
+    ejemplos prácticos y explicaciones claras para principiantes.
