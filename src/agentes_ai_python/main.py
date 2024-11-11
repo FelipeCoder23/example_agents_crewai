@@ -1,0 +1,1 @@
+"example_agents_crewai_env\Scripts\activate"

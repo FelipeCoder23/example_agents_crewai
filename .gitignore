@@ -1,0 +1,26 @@
+# Entorno virtual
+example_agents_crewai_env/
+
+# Archivos de Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Configuración del entorno de desarrollo
+.vscode/
+.idea/
+*.env
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración de Gradio (si los hubiera)
+gradio_cache/
+
+# Archivos de configuración de Jupyter Notebook (si los usas)
+.ipynb_checkpoints/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
