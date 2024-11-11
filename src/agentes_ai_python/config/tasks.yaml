@@ -1,15 +1,22 @@
-# Configuración de las tareas
-
 investigacion_tema:
   description: >
-    Investiga un tema popular de Python en YouTube, identificando el contenido de mayor interés.
+    Investiga un tema popular de Programación Orientada a Objetos en Python, identificando contenido que explique
+    conceptos como clases, objetos, herencia, encapsulación y polimorfismo en Python.
   expected_output: >
-    Un resumen detallado del tema investigado con enlaces a los videos relevantes y una 
-    breve descripción del contenido más popular en Python.
+    Un resumen detallado sobre los conceptos clave de Programación Orientada a Objetos en Python, con ejemplos de código 
+    y enlaces a videos o recursos relevantes que cubran estos conceptos.
+  agent: investigador_tendencias
 
 creacion_guion:
   description: >
     Crear un guion educativo en base al resumen de la investigación realizado por el Investigador de Tendencias.
+    El guion debe adaptarse al tema investigado y debe incluir:
+      - Una introducción general al tema para principiantes.
+      - Explicación de los conceptos clave relacionados con el tema, incluyendo ejemplos prácticos cuando sea posible.
+      - Una sección breve con ejemplos de cómo se usa el tema en aplicaciones o proyectos reales.
+      - Un ejercicio práctico al final que permita a los principiantes aplicar los conceptos aprendidos.
+      - Una lista de recursos adicionales (cursos, libros, videos, documentación) para aprender más sobre el tema.
   expected_output: >
-    Un guion educativo bien estructurado, que siga los puntos claves de la investigación e incluya 
-    ejemplos prácticos y explicaciones claras para principiantes.
+    Un guion educativo bien estructurado que siga los puntos clave de la investigación e incluya aplicaciones prácticas,
+    ejemplos reales, un ejercicio práctico, y recursos adicionales para aprender más sobre el tema.
+  agent: guionista_contenidos
