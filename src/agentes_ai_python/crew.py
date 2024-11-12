@@ -1,43 +1,35 @@
-import os
-from dotenv import load_dotenv
-from crewai import Agent, Crew, Process
+from crewai import Agent, Task, Crew, Process
 from crewai_tools import YoutubeChannelSearchTool, YoutubeVideoSearchTool
 
-# Cargar las variables de entorno desde el archivo .env
-load_dotenv()
-
 def configure_crew(agents, tasks, process_type):
-    # Crear instancia de Agent para el investigador con herramientas de YouTube
-    investigador = Agent(
-        role=agents["investigador_tendencias"]["role"],
-        goal=agents["investigador_tendencias"]["goal"],
-        tools=[YoutubeChannelSearchTool(), YoutubeVideoSearchTool()],
-        backstory=agents["investigador_tendencias"]["backstory"]
-    )
+    # Instancia las herramientas
+    channel_search_tool = YoutubeChannelSearchTool()
+    video_search_tool = YoutubeVideoSearchTool()
+    
+    # Crear instancias de agentes y mapearlas con nombres
+    agents_instances = {}
+    for agent_name, agent_config in agents.items():
+        # Asignación de herramientas específicas
+        if agent_name == "investigador_tendencias":
+            agent_config["tools"] = [channel_search_tool, video_search_tool]
+        agent_instance = Agent(**agent_config)
+        agents_instances[agent_name] = agent_instance  # Mapea con el nombre exacto del agente
+    
+    # Crear instancias de tareas y asociarlas con sus agentes
+    tasks_instances = []
+    for task_name, task_config in tasks.items():
+        agent_name = task_config.get("agent")  # Obtener el nombre del agente desde la tarea
+        agent_instance = agents_instances.get(agent_name)  # Buscar el agente por su nombre exacto
+        if agent_instance is None:
+            raise ValueError(f"No se encontró el agente '{agent_name}' para la tarea '{task_name}'")
 
-    # Crear instancia de Agent para el guionista
-    guionista = Agent(
-        role=agents["guionista_contenidos"]["role"],
-        goal=agents["guionista_contenidos"]["goal"],
-        backstory=agents["guionista_contenidos"]["backstory"]
-    )
+        task_instance = Task(
+            description=task_config["description"],
+            expected_output=task_config["expected_output"],
+            agent=agent_instance  # Asocia la instancia del agente aquí
+        )
+        tasks_instances.append(task_instance)
 
-    # Configurar las tareas y asignar agentes
-    investigacion_tema_task = {
-        **tasks["investigacion_tema"],
-        "agent": investigador  # Asigna el agente investigador
-    }
-
-    creacion_guion_task = {
-        **tasks["creacion_guion"],
-        "agent": guionista  # Asigna el agente guionista
-    }
-
-    # Configurar Crew con el proceso secuencial
-    crew = Crew(
-        agents=[investigador, guionista],
-        tasks=[investigacion_tema_task, creacion_guion_task],
-        process=process_type
-    )
-
+    # Configura y retorna la tripulación (Crew)
+    crew = Crew(agents=list(agents_instances.values()), tasks=tasks_instances, process=process_type)
     return crew
