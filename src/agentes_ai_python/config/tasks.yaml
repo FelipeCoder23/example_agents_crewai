@@ -1,18 +1,19 @@
 investigacion_tema:
   description: >
-    Realiza una investigación en YouTube sobre el tema exacto proporcionado. La búsqueda debe centrarse exclusivamente en el tema 
-    especificado, sin incluir información sobre temas populares no relacionados. 
-    Utiliza tanto canales como videos en YouTube para encontrar contenido relevante que explique conceptos, ejemplos y mejores prácticas 
-    relacionados con el tema solicitado.
+    Realiza una investigación en YouTube sobre el tema exacto proporcionado. La búsqueda debe centrarse exclusivamente 
+    en el tema especificado, sin incluir información sobre temas populares no relacionados.
+    Utiliza tanto canales como videos en YouTube para encontrar contenido relevante que explique conceptos, ejemplos 
+    y mejores prácticas relacionados con el tema solicitado.
   expected_output: >
-    Un resumen detallado centrado exclusivamente en el tema solicitado, incluyendo ejemplos prácticos y enlaces a videos o recursos
-    específicos que aborden este tema. No debe incluir información sobre otros temas a menos que se relacione directamente con el tema solicitado.
+    Un resumen detallado centrado exclusivamente en el tema solicitado, incluyendo ejemplos prácticos y enlaces a videos
+    o recursos específicos que aborden este tema. No debe incluir información sobre otros temas a menos que se relacione
+    directamente con el tema solicitado.
   agent: investigador_tendencias
 
 creacion_guion:
   description: >
-    Crear un guion educativo basado en el resumen de la investigación realizado por el Investigador de Tendencias. El guion debe adaptarse
-    específicamente al tema investigado y debe incluir:
+    Crear un guion educativo basado en el resumen de la investigación realizado por el Investigador de Contenido. 
+    El guion debe adaptarse específicamente al tema investigado y debe incluir:
       - Una introducción general sobre el tema solicitado.
       - Explicación de conceptos clave, incluyendo ejemplos prácticos cuando sea posible.
       - Ejemplos de uso en proyectos reales, aplicados exclusivamente al tema.
@@ -21,3 +22,11 @@ creacion_guion:
   expected_output: >
     Un guion educativo bien estructurado y enfocado exclusivamente en el tema proporcionado, sin desviarse hacia otros temas generales.
   agent: guionista_contenidos
+
+revision_guion:
+  description: >
+    Revisa el guion educativo para asegurar claridad, coherencia y precisión técnica. Sugiere mejoras y corrige errores
+    de redacción si es necesario, asegurando que el contenido sea claro y accesible para el público objetivo.
+  expected_output: >
+    Un guion revisado y pulido, listo para su uso educativo. Feedback sobre posibles mejoras en el contenido.
+  agent: revisor_contenidos

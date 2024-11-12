@@ -1,24 +1,28 @@
 "example_agents_crewai_env\Scripts\activate"
 
-import os
-from dotenv import load_dotenv  # Importar dotenv para cargar variables de entorno
-from crewai import Crew, Process
-from agentes_ai_python.crew import configure_crew  # Solo importa configure_crew
-from agentes_ai_python.config_loader import load_agents, load_tasks
+import sys
+from agentes_ai_python.crew import EducationalContentCrew
 
-# Cargar las variables de entorno desde el archivo .env
-load_dotenv()
-print("API Key:", os.getenv("OPENAI_API_KEY"))
+def run(topic="Python"):
+    """Ejecuta el flujo de trabajo de generación de contenido educativo sobre un tema específico"""
+    inputs = {
+        'topic': topic
+    }
+    EducationalContentCrew().crew().kickoff(inputs=inputs)
 
-def main(topic):  # Agrega el parámetro topic
-    # Cargar configuración de agentes y tareas
-    agents = load_agents("agentes_ai_python/config/agents.yaml")
-    tasks = load_tasks("agentes_ai_python/config/tasks.yaml")
-
-    # Configurar el equipo de agentes y ejecutar el flujo de trabajo
-    crew = configure_crew(agents, tasks, Process.sequential)
-    result = crew.kickoff(inputs={"topic": topic})  # Pasa el topic al kickoff
-    return result
+def train():
+    """Entrena el crew de generación de contenido educativo por un número específico de iteraciones."""
+    inputs = {
+        'topic': "Python"
+    }
+    try:
+        n_iterations = int(sys.argv[1]) if len(sys.argv) > 1 else 1
+        EducationalContentCrew().crew().train(n_iterations=n_iterations, inputs=inputs)
+    except Exception as e:
+        raise Exception(f"An error occurred while training the crew: {e}")
 
 if __name__ == "__main__":
-    main("Python")  # Pasa un valor predeterminado para pruebas
+    if len(sys.argv) > 1 and sys.argv[1].isdigit():
+        train()
+    else:
+        run("Python")  # Puedes cambiar el tema a investigar aquí
