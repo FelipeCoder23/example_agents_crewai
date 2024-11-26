@@ -4,7 +4,6 @@ from crewai.project import CrewBase, agent, crew, task
 
 # Importación de herramientas de CrewAI
 from crewai_tools import YoutubeChannelSearchTool, YoutubeVideoSearchTool
-from pydantic import BaseModel
 
 # Definir las herramientas
 youtube_channel_tool = YoutubeChannelSearchTool()
