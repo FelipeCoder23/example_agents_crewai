@@ -1,11 +1,9 @@
 from typing import List
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-
-# Importación de herramientas de CrewAI
 from crewai_tools import YoutubeChannelSearchTool, YoutubeVideoSearchTool
 
-# Definir las herramientas
+# Instanciar herramientas manualmente
 youtube_channel_tool = YoutubeChannelSearchTool()
 youtube_video_tool = YoutubeVideoSearchTool()
 
@@ -19,7 +17,7 @@ class EducationalContentCrew:
     def investigador_tendencias(self) -> Agent:
         return Agent(
             config=self.agents_config['investigador_tendencias'],
-            tools=[youtube_channel_tool, youtube_video_tool],
+            tools=[youtube_channel_tool, youtube_video_tool],  # Herramientas asignadas directamente
             verbose=True
         )
     
@@ -27,14 +25,14 @@ class EducationalContentCrew:
     def guionista_contenidos(self) -> Agent:
         return Agent(
             config=self.agents_config['guionista_contenidos'],
-            verbose=True
+            verbose=True  # Sin herramientas
         )
     
     @agent
     def revisor_contenidos(self) -> Agent:
         return Agent(
             config=self.agents_config['revisor_contenidos'],
-            verbose=True
+            verbose=True  # Sin herramientas
         )
     
     @task
@@ -65,5 +63,5 @@ class EducationalContentCrew:
             agents=self.agents,  # Agentes creados automáticamente por el decorador @agent
             tasks=self.tasks,  # Tareas creadas automáticamente por el decorador @task
             process=Process.sequential,
-            verbose=2,
+            verbose=True,
         )

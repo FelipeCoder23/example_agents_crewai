@@ -4,11 +4,13 @@ import sys
 from agentes_ai_python.crew import EducationalContentCrew
 
 def run(topic="Python"):
-    """Ejecuta el flujo de trabajo de generación de contenido educativo sobre un tema específico"""
+    """Ejecuta el flujo de trabajo de generación de contenido educativo sobre un tema específico y devuelve el resultado."""
     inputs = {
         'topic': topic
     }
-    EducationalContentCrew().crew().kickoff(inputs=inputs)
+    # Captura el resultado de kickoff
+    result = EducationalContentCrew().crew().kickoff(inputs=inputs)
+    return result  # Asegúrate de devolver el resultado
 
 def train():
     """Entrena el crew de generación de contenido educativo por un número específico de iteraciones."""
