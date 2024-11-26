@@ -1,27 +1,28 @@
 investigacion_tema:
   description: >
-    Realiza una investigación en YouTube sobre el tema exacto proporcionado. La búsqueda debe centrarse exclusivamente 
-    en el tema especificado, sin incluir información sobre temas populares no relacionados.
+    Realiza una investigación en YouTube sobre el tema exacto proporcionado: {topic}.
+    La búsqueda debe centrarse exclusivamente en el tema especificado, sin incluir información sobre temas populares no relacionados.
     Utiliza tanto canales como videos en YouTube para encontrar contenido relevante que explique conceptos, ejemplos 
     y mejores prácticas relacionados con el tema solicitado.
   expected_output: >
-    Un resumen detallado centrado exclusivamente en el tema solicitado, incluyendo ejemplos prácticos y enlaces a videos
-    o recursos específicos que aborden este tema. No debe incluir información sobre otros temas a menos que se relacione
+    Un resumen detallado centrado exclusivamente en el tema solicitado: {topic}, incluyendo ejemplos prácticos y enlaces
+    a videos o recursos específicos que aborden este tema. No debe incluir información sobre otros temas a menos que se relacione
     directamente con el tema solicitado.
   agent: investigador_tendencias
 
 creacion_guion:
   description: >
-    Crear un guion educativo basado en el resumen de la investigación realizado por el Investigador de Contenido. 
-    El guion debe adaptarse específicamente al tema investigado y debe incluir:
-      - Una introducción general sobre el tema solicitado.
+    Crear un guion educativo basado en el resumen de la investigación realizado por el Investigador de Contenido sobre el tema: {topic}.
+    El guion debe incluir:
+      - Una introducción general sobre el tema solicitado: {topic}.
       - Explicación de conceptos clave, incluyendo ejemplos prácticos cuando sea posible.
       - Ejemplos de uso en proyectos reales, aplicados exclusivamente al tema.
       - Un ejercicio práctico que permita aplicar los conceptos aprendidos.
       - Recursos adicionales para profundizar en el tema (enlaces a videos relevantes, cursos, documentación).
   expected_output: >
-    Un guion educativo bien estructurado y enfocado exclusivamente en el tema proporcionado, sin desviarse hacia otros temas generales.
+    Un guion educativo bien estructurado y enfocado exclusivamente en el tema proporcionado: {topic}, sin desviarse hacia otros temas generales.
   agent: guionista_contenidos
+
 
 revision_guion:
   description: >
