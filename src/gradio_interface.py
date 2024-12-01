@@ -22,7 +22,7 @@ with gr.Blocks() as iface:
     output_text = gr.Markdown(label="Guion Educativo Generado")
 
     # Botón para ejecutar el pipeline
-    submit_button = gr.Button("Generar Guion")
+    submit_button = gr.Button("Generar Contenido")
 
     # Configuración para ejecutar la función con el botón y mostrar el estado de "cargando"
     submit_button.click(fn=run_agent_pipeline, inputs=topic_input, outputs=output_text)

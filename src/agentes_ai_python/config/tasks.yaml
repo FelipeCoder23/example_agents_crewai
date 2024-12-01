@@ -8,7 +8,7 @@ investigacion_tema:
     Un resumen detallado centrado exclusivamente en el tema solicitado: {topic}, incluyendo ejemplos prácticos y enlaces
     a videos o recursos específicos que aborden este tema. No debe incluir información sobre otros temas a menos que se relacione
     directamente con el tema solicitado.
-  agent: investigador_tendencias
+  
 
 creacion_guion:
   description: >
@@ -21,7 +21,7 @@ creacion_guion:
       - Recursos adicionales para profundizar en el tema (enlaces a videos relevantes, cursos, documentación).
   expected_output: >
     Un guion educativo bien estructurado y enfocado exclusivamente en el tema proporcionado: {topic}, sin desviarse hacia otros temas generales.
-  agent: guionista_contenidos
+  
 
 
 revision_guion:
@@ -30,4 +30,4 @@ revision_guion:
     de redacción si es necesario, asegurando que el contenido sea claro y accesible para el público objetivo.
   expected_output: >
     Un guion revisado y pulido, listo para su uso educativo. Feedback sobre posibles mejoras en el contenido.
-  agent: revisor_contenidos
+  
