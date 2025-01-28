@@ -17,7 +17,7 @@ class EducationalContentCrew:
     def investigador_tendencias(self) -> Agent:
         return Agent(
             config=self.agents_config['investigador_tendencias'],
-            tools=[youtube_channel_tool, youtube_video_tool],  # Herramientas asignadas directamente
+            tools=[youtube_channel_tool, youtube_video_tool],  
             verbose=True
         )
     
