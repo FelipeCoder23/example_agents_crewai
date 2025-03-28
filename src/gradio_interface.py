@@ -12,7 +12,7 @@ def run_agent_pipeline(topic):
 
 # Configuración de la interfaz en formato de columna y con un estilo de carga visible
 with gr.Blocks() as iface:
-    gr.Markdown("# Generador de Contenido Educativo sobre Python")
+    gr.Markdown("# Generador de Contenido Educativo")
     gr.Markdown("Ingrese un tema para iniciar el proceso de investigación y generación de contenido educativo. El guion incluirá una introducción, conceptos clave, aplicaciones prácticas y un ejercicio de programación.")
     
     # Entrada de texto para el tema en una columna separada
