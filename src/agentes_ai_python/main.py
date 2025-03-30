@@ -1,5 +1,3 @@
-"example_agents_crewai_env\Scripts\activate"
-
 import sys
 from agentes_ai_python.crew import EducationalContentCrew
 
